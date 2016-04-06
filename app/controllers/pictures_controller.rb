@@ -11,7 +11,7 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
-  def create
+  def create #tells you to render :new which is the new.html.erb
 #makes a new picture with what picture_params returns
 #this is the method we're calling (post pictures => pictures#create)
     @picture = Picture.new(picture_params) #picture info that came in the request
