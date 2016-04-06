@@ -34,11 +34,16 @@ class PicturesController < ApplicationController
     else
       render :edit #render the view associated with the action :edit (edit.html.erb)
     end
-  end 
+  end
   #calling the find method on the Model class, storing it in variable
   #arguement is the ID which is stored in request data
   #Controller taps into Model/Data to figure out what data to send to views to be rendered
 
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    redirect_to pictures_url
+  end
 
 
 
