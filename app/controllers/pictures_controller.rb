@@ -23,6 +23,24 @@ class PicturesController < ApplicationController
     #render :text => "Saving a picture. URL: #{params[:url]}, Title: #{params[:title]}, Artist: #{params[:artist]}"
   end
 
+  def edit
+    @picture = Picture.find(params[:id]) #id is coming in with the request info
+  end
+
+  def update
+    @picture = Picture.find(params[:id])
+    if @picture.update_attribute(picture_params)
+      redirect_to "/pictures/#{@pictures.id}"
+    else
+      render :edit #render the view associated with the action :edit (edit.html.erb)
+    end
+  end 
+  #calling the find method on the Model class, storing it in variable
+  #arguement is the ID which is stored in request data
+  #Controller taps into Model/Data to figure out what data to send to views to be rendered
+
+
+
 
   private
   def picture_params
